@@ -2,12 +2,13 @@ import React from 'react';
 import Base from './Base';
 
 export default function Home() {
-    // console.log("dsv", process.env.REACT_APP_BACKEND);
     return (
-        <Base>
-            <div className="container">
-                Home Page
-            </div>
-        </Base>
-    );
+        <>
+            <Base title="Home page" description="A beautiful homepage">
+                <div className='my-5 text-primary'>
+                    <text>This is the main content</text>
+                </div>
+            </Base>
+        </>
+    )
 }

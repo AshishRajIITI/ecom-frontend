@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppRoutes from './AppRoutes';
+import Home from "./core/Home";
+import "./styles.css";
 
-ReactDOM.render(<AppRoutes />, document.getElementById("root"));
+ReactDOM.render(<Home />, document.getElementById("root"))
