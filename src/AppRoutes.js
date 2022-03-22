@@ -9,6 +9,7 @@ import AdminRoutes from './auth/helper/AdminRoutes';
 import UserDashboard from "./user/UserDashBoard";
 import AdminDashboard from "./user/AdminDashBoard";
 
+import AddCategory from './admin/AddCategory';
 
 
 export default function AppRoutes() {
@@ -21,7 +22,7 @@ export default function AppRoutes() {
                 <Route path="cart" element={<Signin />} />
                 <Route path="user/dashboard" element={<PrivateRoutes><UserDashboard /></PrivateRoutes>} />
                 <Route path="admin/dashboard" element={<AdminRoutes><AdminDashboard /></AdminRoutes>} />
-
+                <Route path="/admin/create/category" element={<PrivateRoutes><AddCategory /></PrivateRoutes>} />
             </Routes>
         </div>
     )
