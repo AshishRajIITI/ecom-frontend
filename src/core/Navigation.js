@@ -1,7 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
+import { isAuthenticated, signout } from '../auth/helper';
+import { useNavigate } from 'react-router-dom';
 
 export default function Navigation() {
+    const navigate = useNavigate();
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -16,23 +19,37 @@ export default function Navigation() {
                                 <Link className="nav-link" to="/">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/dashboard">Dashboard</Link>
-                                {/* <a className="nav-link" href="#">Dashboard</a> */}
+                                {isAuthenticated() && isAuthenticated().user && isAuthenticated().user.role === 0 && (<Link className="nav-link" to="/user/dashboard">User-Dashboard</Link>)}
+
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/admin-dashboard">Admin-Dashboard</Link>
+                                {isAuthenticated() && isAuthenticated().user && isAuthenticated().user.role === 1 && (<Link className="nav-link" to="/admin/dashboard">Admin-Dashboard</Link>)}
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/cart">Cart</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/signup">Sign-Up</Link>
+                                {!isAuthenticated() && (<Link className="nav-link" to="/signup">Sign-Up</Link>)}
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/signin">Sign-In</Link>
+                                {!isAuthenticated() && (<Link className="nav-link" to="/signin">Sign-In</Link>)}
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/signout">Sign-Out</Link>
+                                {
+                                    isAuthenticated() && (
+                                        <span
+                                            style={{ cursor: "pointer" }}
+                                            className="nav-link"
+                                            onClick={() => {
+                                                signout(() => {
+                                                    navigate("/")
+                                                })
+                                            }}
+                                        >
+                                            Sign-Out
+                                        </span>)
+
+                                }
                             </li>
                         </ul>
                     </div>
