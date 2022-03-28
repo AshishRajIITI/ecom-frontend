@@ -10,19 +10,30 @@ import UserDashboard from "./user/UserDashBoard";
 import AdminDashboard from "./user/AdminDashBoard";
 
 import AddCategory from './admin/AddCategory';
+import ManageCategory from './admin/ManageCategory';
+import ManageProducts from './admin/ManageProducts';
+
+import AddProduct from './admin/AddProduct';
+import UpdateProduct from './admin/UpdateProduct';
 
 
 export default function AppRoutes() {
     return (
         <div>
             <Routes>
+
                 <Route path="/" element={<Home />} />
                 <Route path="signup" element={<Signup />} />
                 <Route path="signin" element={<Signin />} />
                 <Route path="cart" element={<Signin />} />
                 <Route path="user/dashboard" element={<PrivateRoutes><UserDashboard /></PrivateRoutes>} />
                 <Route path="admin/dashboard" element={<AdminRoutes><AdminDashboard /></AdminRoutes>} />
-                <Route path="/admin/create/category" element={<PrivateRoutes><AddCategory /></PrivateRoutes>} />
+                <Route path="/admin/create/category" element={<AdminRoutes><AddCategory /></AdminRoutes>} />
+                <Route path="/admin/manage/category" element={<AdminRoutes><ManageCategory /></AdminRoutes>} />
+                <Route path="/admin/create/product" element={<AdminRoutes><AddProduct /></AdminRoutes>} />
+                <Route path="/admin/manage/products" element={<AdminRoutes><ManageProducts /></AdminRoutes>} />
+                <Route path="/admin/update/:productId" element={<AdminRoutes><UpdateProduct /></AdminRoutes>} />
+
             </Routes>
         </div>
     )
