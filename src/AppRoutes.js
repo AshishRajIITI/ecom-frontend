@@ -15,6 +15,7 @@ import ManageProducts from './admin/ManageProducts';
 
 import AddProduct from './admin/AddProduct';
 import UpdateProduct from './admin/UpdateProduct';
+import Cart from './core/Cart';
 
 
 export default function AppRoutes() {
@@ -25,7 +26,7 @@ export default function AppRoutes() {
                 <Route path="/" element={<Home />} />
                 <Route path="signup" element={<Signup />} />
                 <Route path="signin" element={<Signin />} />
-                <Route path="cart" element={<Signin />} />
+                <Route path="cart" element={<Cart />} />
                 <Route path="user/dashboard" element={<PrivateRoutes><UserDashboard /></PrivateRoutes>} />
                 <Route path="admin/dashboard" element={<AdminRoutes><AdminDashboard /></AdminRoutes>} />
                 <Route path="/admin/create/category" element={<AdminRoutes><AddCategory /></AdminRoutes>} />
@@ -33,6 +34,7 @@ export default function AppRoutes() {
                 <Route path="/admin/create/product" element={<AdminRoutes><AddProduct /></AdminRoutes>} />
                 <Route path="/admin/manage/products" element={<AdminRoutes><ManageProducts /></AdminRoutes>} />
                 <Route path="/admin/update/:productId" element={<AdminRoutes><UpdateProduct /></AdminRoutes>} />
+
 
             </Routes>
         </div>

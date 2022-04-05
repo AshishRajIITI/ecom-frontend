@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { API } from '../Backend';
 import { getPhoto } from './helper/coreapicalls';
 
 
 export default function Card({ eachProduct }) {
+
+    const [redirect, setRedirect] = useState(false);
+    const [cartProducts, setCartProducts] = useState([]);
+
+
 
     const productId = eachProduct._id;
     const imageurl = eachProduct
@@ -17,8 +23,8 @@ export default function Card({ eachProduct }) {
                 <div className="card-body">
                     <h5 className="card-title">{eachProduct.name}</h5>
                     <p className="card-text">{eachProduct.description}</p>
-                    <a href="#" className="btn btn-primary">Add To Cart</a>
-                    <a href="#" className="btn btn-danger">Remove from the cart</a>
+                    {/* <Link onClick={() => { handleAddToCart(eachProduct) }} className="btn btn-primary">Add To Cart</Link> */}
+                    {/* <Link onClick={removeFromCart} className="btn btn-danger">Remove from the cart</Link> */}
                 </div>
             </div>
         </div>
